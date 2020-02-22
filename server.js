@@ -13,8 +13,7 @@ app.use(express.json());
 //Arrays for data
 var tables = [];
 
-var reserve = []; //waitingList
-
+var waitList = []; //waitingList
 
 //ROUTES
 
@@ -35,8 +34,8 @@ app.get("/api/tables", function(req, res) {
 });
 
 // Displays current reservations
-app.get("/api/reserve", function(req, res) {
-  return res.json(reserve);
+app.get("/api/waitlist", function(req, res) {
+  return res.json(waitList);
 });
 
 // Create New Reservation - takes in JSON input
@@ -45,14 +44,28 @@ app.post("/api/tables", function(req, res) {
   // This works because of our body parsing middleware
   var newReserve = req.body;
 
-
   // Using a RegEx Pattern to remove spaces from newReserve
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newReserve.routeName = newReserve.name.replace(/\s+/g, "").toLowerCase();
+  //   newReserve.routeName = newReserve.name.replace(/\s+/g, "").toLowerCase();
 
   // console.log(newReserve);
 
-  reserve.push(newReserve);
+  tables.push(newReserve);
+
+  res.json(newReserve);
+});
+app.post("/api/waitlist", function(req, res) {
+  // req.body hosts is equal to the JSON post sent from the user
+  // This works because of our body parsing middleware
+  var newReserve = req.body;
+
+  // Using a RegEx Pattern to remove spaces from newReserve
+  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+  //   newReserve.routeName = newReserve.name.replace(/\s+/g, "").toLowerCase();
+
+  // console.log(newReserve);
+
+  waitList.push(newReserve);
 
   res.json(newReserve);
 });
