@@ -30,13 +30,13 @@
             <h1 class="display-4"><i class='fas fa-fire' style='font-size:48px; font-weight: bold !important;'></i>Hot Restaurant</h1>
             <hr class="my-4">
             <p><h1>We only have 5 tables!  Book your seat before they are all gone!</h1></p>
-            <a class="btn btn-primary btn-lg" href="./tables" role="button" id='tblbtn'>View Tables</a> <a class="btn btn-primary btn-lg" href="./reserve" role="button" id='resbtn'>Make Reservation</a>
+            <a class="btn btn-primary btn-lg" href="./tables.html" role="button" id='tblbtn'>View Tables</a> <a class="btn btn-primary btn-lg" href="./reserve" role="button" id='resbtn'>Make Reservation</a>
           </div>
-          <a href="./reserve">Api Wait List</a> | <a href="./tables">Api Table Link</a>
+          <a href="./reserve.html">Api Wait List</a> | <a href="./tables.html">Api Table Link</a>
           <script>
-$('<#tblbtn>').onclick(function() {
+$('#tblbtn').click(function() {
             $.ajax({url: "api/tables", success: function(result){
-        console.log(response);
+        $('text').append(response);
             }})})
           </script>
     </body>
