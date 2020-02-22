@@ -11,13 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Arrays for data
-var tables = [
+var tables = [];
 
-]
-
-var reserve = [
-  
-]
+var reserve = []; //waitingList
 
 //ROUTES
 
@@ -32,7 +28,32 @@ app.get("/tables", function(req, res) {
 app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "/public/reserve.html"));
 });
+// Displays all tables
+app.get("/api/tables", function(req, res) {
+  return res.json(tables);
+});
 
+// Displays current reservations
+app.get("/api/reserve", function(req, res) {
+  return res.json(reserve);
+});
+
+// Create New Reservation - takes in JSON input
+app.post("/api/tables", function(req, res) {
+  // req.body hosts is equal to the JSON post sent from the user
+  // This works because of our body parsing middleware
+  var newReserve = req.body;
+
+  // Using a RegEx Pattern to remove spaces from newReserve
+  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+  newReserve.routeName = newReserve.name.replace(/\s+/g, "").toLowerCase();
+
+  // console.log(newReserve);
+
+  reserve.push(newReserve);
+
+  res.json(newReserve);
+});
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
