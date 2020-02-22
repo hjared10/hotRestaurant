@@ -15,6 +15,7 @@ var tables = [];
 
 var reserve = []; //waitingList
 
+
 //ROUTES
 
 app.get("/", function(req, res) {
@@ -44,6 +45,7 @@ app.post("/api/tables", function(req, res) {
   // This works because of our body parsing middleware
   var newReserve = req.body;
 
+
   // Using a RegEx Pattern to remove spaces from newReserve
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
   //   newReserve.routeName = newReserve.name.replace(/\s+/g, "").toLowerCase();
@@ -54,6 +56,7 @@ app.post("/api/tables", function(req, res) {
 
   res.json(newReserve);
 });
+
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
