@@ -10,10 +10,27 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//Arrays for data
+var tables = [
+
+]
+
+var reserve = [
+  
+]
+
 //ROUTES
 
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "/public/index.html"));
+});
+
+app.get("/tables", function(req, res) {
+  res.sendFile(path.join(__dirname, "/public/tables.html"));
+});
+
+app.get("/reserve", function(req, res) {
+  res.sendFile(path.join(__dirname, "/public/reserve.html"));
 });
 
 // Starts the server to begin listening
