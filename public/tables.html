@@ -60,6 +60,17 @@
         Wait List</a>
   </p></div>
 </footer>
-      
+      <script>
+        function runTableQuery() {
+    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    $.ajax({ url: "/api/tables", method: "GET" })
+      .then(function(tableData) {
+
+        // Here we then log the tableData to console, where it will show up as an object.
+        console.log(tableData);
+      })
+    }
+        runTableQuery()
+      </script>
 </body>
 </html>

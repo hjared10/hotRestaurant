@@ -46,11 +46,11 @@ app.post("/api/tables", function(req, res) {
 
   // Using a RegEx Pattern to remove spaces from newReserve
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newReserve.routeName = newReserve.name.replace(/\s+/g, "").toLowerCase();
+  //   newReserve.routeName = newReserve.name.replace(/\s+/g, "").toLowerCase();
 
   // console.log(newReserve);
 
-  reserve.push(newReserve);
+  tables.push(newReserve);
 
   res.json(newReserve);
 });
