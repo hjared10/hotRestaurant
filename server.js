@@ -10,6 +10,15 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//Arrays for data
+var tables = [
+
+]
+
+var reserve = [
+  
+]
+
 //ROUTES
 
 app.get("/", function(req, res) {
